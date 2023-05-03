@@ -80,19 +80,26 @@ impl Stack for ListStack {
     fn pop_val(&mut self) -> Option<i32> {
         match self {
             Val(value, other) => {
+                //save the value
                 let popped_value = *value;
+                //case 1: next pointer is none -> delete self
+                //case 2: next pointer is some -> recursively call pop to iterate over List to next element
                 match other.take() {
                     None => *self = Nil,
-                    Some(other) => todo!(),
+                    Some(mut other) => {other.pop_val();},
                 };
-                todo!()
+                Some(popped_value)
             }
+            //empty stack -> return none option
             Nil => None,
         }
     }
 
     fn is_empty(&self) -> bool {
-        todo!()
+        match self{
+            Val(_,_)=>false,
+            Nil=>true,
+        }
     }
 }
 
