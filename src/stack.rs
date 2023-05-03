@@ -47,18 +47,34 @@ use ListStack::Val;
 // Complete implementation of Stack for ListStack
 impl Stack for ListStack {
     fn init() -> Self {
+        //simply initializes by returning the Nil variant
         Nil
     }
 
     fn push_val(&mut self, i: i32) {
         match self {
-            Val(value, other) => *self = todo!(),
-            Nil => *self = todo!(),
+            //case 1: ListStack still has a pointer, keep following
+            Val(_, Some(next)) => next.push_val(i),
+            //case 2: End of List or empty List
+            _ => {
+                //init new ListStack
+                let new_val = Val(i,Some(Box::new(Nil)));
+                match self{
+                    //empty List -> add new_val as Element
+                     Nil => *self = new_val,
+                    //end of List -> give previous Element the pointer to new_val
+                      Val(_,next) => *next = Some(Box::new(new_val)),
+                 }
+            }
         };
     }
 
     fn top_val(&self) -> Option<&i32> {
-        todo!()
+        match self{
+            Nil => None,
+            Val(value, None) => Some(value),
+            Val(_,Some(next)) => next.top_val(),
+        }
     }
 
     fn pop_val(&mut self) -> Option<i32> {
