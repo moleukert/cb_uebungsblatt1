@@ -4,22 +4,28 @@ use crate::Stack;
 impl Stack for Vec<i32> {
     fn init() -> Self {
         todo!()
+        //use new method of vec
     }
 
     fn push_val(&mut self, i: i32) {
         todo!()
+        //use push method of vec
     }
 
     fn top_val(&self) -> Option<&i32> {
         todo!()
+        //either pop an element, save it then push and return(seems a bit brutish)
+        //or get lenth with len then return element at last index
     }
 
     fn pop_val(&mut self) -> Option<i32> {
         todo!()
+        //use pop method of vec
     }
 
     fn is_empty(&self) -> bool {
         todo!()
+        //use isempty method of vec
     }
 }
 
