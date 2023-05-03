@@ -4,8 +4,8 @@ use crate::Stack;
 impl Stack for Vec<i32> {
     fn init() -> Self {
         //use new method of vec
-        let vec: Vec<i32>= Vec::new();
-        vec
+        Vec::new()
+        
     }
 
     fn push_val(&mut self, i: i32) {    
@@ -15,13 +15,15 @@ impl Stack for Vec<i32> {
 
     fn top_val(&self) -> Option<&i32> {
         //tests if vecor is empty, otherwise returns the highest index element of the vector
-        let len:usize = self.len();
+        /*let len:usize = self.len();
         if self.is_empty(){
             None
         }
         else{
             Some(&self[len])
-        }
+        }*/
+        //or just look at the last element
+        self.last()
     }
 
     fn pop_val(&mut self) -> Option<i32> {
