@@ -3,29 +3,35 @@ use crate::Stack;
 // TODO Complete implementation
 impl Stack for Vec<i32> {
     fn init() -> Self {
-        todo!()
         //use new method of vec
+        let vec: Vec<i32>= Vec::new();
+        vec
     }
 
-    fn push_val(&mut self, i: i32) {
-        todo!()
+    fn push_val(&mut self, i: i32) {    
         //use push method of vec
+        self.push(i);
     }
 
     fn top_val(&self) -> Option<&i32> {
-        todo!()
-        //either pop an element, save it then push and return(seems a bit brutish)
-        //or get lenth with len then return element at last index
+        //tests if vecor is empty, otherwise returns the highest index element of the vector
+        let len:usize = self.len();
+        if self.is_empty(){
+            None
+        }
+        else{
+            Some(&self[len])
+        }
     }
 
     fn pop_val(&mut self) -> Option<i32> {
-        todo!()
         //use pop method of vec
+        self.pop()
     }
 
-    fn is_empty(&self) -> bool {
-        todo!()
+    fn is_empty(&self) -> bool {     
         //use isempty method of vec
+        self.is_empty()
     }
 }
 
